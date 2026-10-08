@@ -40,7 +40,7 @@ esac
 # ── Path resolution ───────────────────────────────────────────────────────────
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="${SCRIPT_DIR}"
-KIT_DIR="${WORKSPACE_ROOT}/DonneesDipo/IBM_API_Connect_Flow_Pilot-12.1.1.2.4"
+KIT_DIR="${WORKSPACE_ROOT}/resources/ibm-apic-flow-pilot-kit"
 MCP_DIR="${KIT_DIR}/mcp-servers"
 BOB_CONFIG_DIR="${HOME}/.bob"
 BOB_MCP_JSON="${BOB_CONFIG_DIR}/mcp.json"
@@ -101,7 +101,7 @@ else
 fi
 
 # Validate local Flow Pilot kit
-[[ -d "$MCP_DIR" ]] || die "MCP servers folder not found: $MCP_DIR\nHave you extracted the IBM_API_Connect_Flow_Pilot kit into DonneesDipo/?\nSee README.md Step 1."
+[[ -d "$MCP_DIR" ]] || die "MCP servers folder not found: $MCP_DIR\nHave you extracted the IBM_API_Connect_Flow_Pilot kit into resources/ibm-apic-flow-pilot-kit/?\nSee README.md Step 1."
 success "Local IBM API Connect Flow Pilot kit validated."
 
 # =============================================================================
