@@ -1,0 +1,32 @@
+# =============================================================================
+# .gitignore — FlowPilot-APIC-Setup
+# =============================================================================
+
+# !! IMPORTANT: flow-pilot.properties may contain secrets after running setup.
+# The version committed here is the blank template — safe to commit as-is.
+# If you fill in real credentials locally, uncomment the line below:
+# flow-pilot.properties
+
+# IBM Flow Pilot kit — large binary, not redistributable
+DonneesDipo/
+
+# Generated MCP config (contains credentials injected by setup script)
+.bob/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+logs/
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
