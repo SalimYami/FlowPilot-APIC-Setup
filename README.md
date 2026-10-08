@@ -98,10 +98,11 @@ Three packages are available on that page. For API Connect (this setup):
 | `wm-integration-flow-pilot-12.1.0.3.zip` | 5 MB | webMethods Integration Server users |
 | `ibm-integration-vscode-extension-1.0.0.zip` | 1.6 MB | IBM Integration Software VS Code extension |
 
-Extract the downloaded archive into a folder called `DonneesDipo/` next to these scripts:
+Extract the downloaded archive into `resources/ibm-apic-flow-pilot-kit/` next to these scripts:
 
 ```bash
-unzip IBM_API_Connect_Flow_Pilot-12.1.1.2.4.zip -d DonneesDipo/
+mkdir -p resources
+unzip IBM_API_Connect_Flow_Pilot-12.1.1.2.4.zip -d resources/ibm-apic-flow-pilot-kit
 ```
 
 After extraction, the layout should look like:
@@ -112,11 +113,12 @@ your-project/
 ├── setup-flow-pilot.ps1
 ├── flow-pilot.properties
 ├── configure-flow-pilot.sh
-└── DonneesDipo/
-    └── IBM_API_Connect_Flow_Pilot-12.1.1.2.4/
-        ├── README.md
-        ├── skills/          ← 10 AI skill definitions
-        └── mcp-servers/     ← 5 MCP server packages (.tgz)
+└── resources/
+    ├── ibm-apic-flow-pilot-kit/     ← IBM API Connect skills + MCP servers
+    │   ├── README.md
+    │   ├── skills/                  ← 10 AI skill definitions
+    │   └── mcp-servers/             ← 5 MCP server packages (.tgz)
+    └── ibm-wm-flow-pilot-kit/       ← (optional) webMethods kit
 ```
 
 ---
@@ -214,7 +216,7 @@ Phase 1 — System prerequisites
   ├── Checks Node.js >= 24
   ├── Installs @apistudio/apim-cli if absent  (npm install -g)
   ├── Detects active oc (OpenShift CLI) session
-  └── Validates the local Flow Pilot kit
+  └── Validates resources/ibm-apic-flow-pilot-kit/
 
 Phase 2 — Target discovery
   ├── Reads flow-pilot.properties
@@ -242,7 +244,7 @@ Phase 4 — MCP registration & skills installation
 [OK]    Node.js v24.x.x detected (>= 24 required).
 [OK]    apic CLI operational.
 [OK]    OpenShift session active: admin @ https://api.<cluster>:6443
-[OK]    Local Flow Pilot kit v12.1.1.2.4 validated.
+[OK]    Local IBM API Connect Flow Pilot kit validated.
 
 === [2/4] Target Discovery ===
 [OK]    Mode: OpenShift
@@ -316,6 +318,26 @@ Each MCP server is launched on demand by Bob as a Node.js subprocess via `npx -p
 | `rest-to-mcp-generator` | Convert REST API specs into MCP KIND file sets |
 | `operation-selector` | Select OpenAPI operations for MCP tool generation |
 | `setup-mcp-asset` | Register a published MCP asset into your agent config |
+
+---
+
+## Repository structure
+
+```
+FlowPilot-APIC-Setup/
+├── setup-flow-pilot.sh              ← Main setup script (macOS / Linux)
+├── setup-flow-pilot.ps1             ← Main setup script (Windows PowerShell)
+├── configure-flow-pilot.sh          ← Lightweight single-MCP-server helper
+├── flow-pilot.properties            ← Configuration template
+├── resources/                       ← IBM kit (git-ignored, download from IBM)
+│   ├── ibm-apic-flow-pilot-kit/     ← IBM API Connect Flow Pilot 12.1.1.2.4
+│   │   ├── skills/                  ← 10 AI skill definitions
+│   │   └── mcp-servers/             ← 5 MCP server packages (.tgz)
+│   └── ibm-wm-flow-pilot-kit/       ← webMethods Integration Flow Pilot
+├── README.md
+├── LICENSE
+└── .gitignore
+```
 
 ---
 
@@ -438,7 +460,7 @@ apic init
 
 The setup scripts in this repository are released under the [Apache 2.0 License](LICENSE).
 
-The IBM API Connect Flow Pilot kit itself is subject to IBM's own license terms, available in `DonneesDipo/IBM_API_Connect_Flow_Pilot-12.1.1.2.4/Licenses/` after extraction.
+The IBM API Connect Flow Pilot kit itself is subject to IBM's own license terms, available in `resources/ibm-apic-flow-pilot-kit/Licenses/` after extraction.
 
 ---
 

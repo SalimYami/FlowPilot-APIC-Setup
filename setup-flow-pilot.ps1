@@ -30,7 +30,7 @@ Write-Host "====================================================================
 # ── Path resolution ───────────────────────────────────────────────────────────
 $ScriptDir      = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $WorkspaceRoot  = $ScriptDir
-$KitDir         = Join-Path $WorkspaceRoot "DonneesDipo\IBM_API_Connect_Flow_Pilot-12.1.1.2.4"
+$KitDir         = Join-Path $WorkspaceRoot "resources\ibm-apic-flow-pilot-kit"
 $McpDir         = Join-Path $KitDir "mcp-servers"
 $BobConfigDir   = Join-Path $env:USERPROFILE ".bob"
 $BobMcpJson     = Join-Path $BobConfigDir "mcp.json"
@@ -65,7 +65,7 @@ if (-not (Get-Command apic -ErrorAction SilentlyContinue)) {
 
 if (-not (Test-Path $McpDir)) {
     Write-Err "MCP servers folder not found: $McpDir"
-    Write-Err "Have you extracted the IBM_API_Connect_Flow_Pilot kit into DonneesDipo/? See README.md Step 1."
+    Write-Err "Have you extracted the IBM_API_Connect_Flow_Pilot kit into resources/ibm-apic-flow-pilot-kit/? See README.md Step 1."
     exit 1
 }
 Write-Success "Local IBM API Connect Flow Pilot kit validated."

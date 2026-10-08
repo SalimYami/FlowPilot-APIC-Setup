@@ -7,8 +7,8 @@
 # If you fill in real credentials locally, uncomment the line below:
 # flow-pilot.properties
 
-# IBM Flow Pilot kit — large binary, not redistributable
-DonneesDipo/
+# IBM Flow Pilot kits — large binaries, not redistributable
+resources/
 
 # Generated MCP config (contains credentials injected by setup script)
 .bob/
